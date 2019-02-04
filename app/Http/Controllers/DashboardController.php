@@ -5,6 +5,10 @@ use App\Models\Users;
 use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function dashboard()
     {
         $userData       = Users::get();
