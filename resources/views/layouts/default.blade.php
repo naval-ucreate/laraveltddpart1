@@ -12,7 +12,6 @@
     @include('includes.flash-message')
         <!-- main content -->
         <div id="content" class="col-md-12">
-
             @yield('content')
         </div>
     </div>

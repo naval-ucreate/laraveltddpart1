@@ -64,4 +64,11 @@ class UserController extends Controller
       $empData = EmpData::get();
       dd($empData);
     }
+    public  function checkRollbar()
+    {
+        $display = "naval";
+        $m
+        return $display;
+    }
+
 }

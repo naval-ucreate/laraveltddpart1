@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/register','UserController@register')->name('display-register-page');
+Route::get('/register','UserControrollbartestller@register')->name('display-register-page');
 Route::post('/add-user-data','UserController@addUserData')->name('add-user-data');
 //login
 Route::get('/login','UserController@login')->name('display-login-page');
@@ -25,3 +25,5 @@ Route::get('/emp','UserController@empdData')->name('display-empdata-page');
 Route::get('/dashboard','DashboardController@dashboard')->name('display-dashboard');
 //logout
 Route::get('/logout','DashboardController@logout')->name('logout');
+//logout
+Route::get('/rollbartest','UserController@checkRollbar')->name('logout');
