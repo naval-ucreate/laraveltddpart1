@@ -53,7 +53,7 @@ class UserController extends Controller
         if (Auth::attempt($userdata)) {
             return redirect()->route('display-dashboard');    
         } 
-        return redirect()->route('display-login-page')->with('success','Logout successfully!');
+        return redirect()->route('display-login-page')->with('error','There is some error! Please try again');
      }
     public function mainDashboard(request $request)
     {
@@ -67,7 +67,6 @@ class UserController extends Controller
     public  function checkRollbar()
     {
         $display = "naval";
-        $m;
         return $display;
     }
 
