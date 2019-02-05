@@ -26,4 +26,4 @@ Route::get('/dashboard','DashboardController@dashboard')->name('display-dashboar
 //logout
 Route::get('/logout','DashboardController@logout')->name('logout');
 //logout
-Route::get('/rollbartest','UserController@checkRollbar')->name('logout');
+Route::get('/rollbartest','UserController@checkRollbar')->name('rollbar');

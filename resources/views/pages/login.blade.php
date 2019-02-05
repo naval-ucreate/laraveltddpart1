@@ -9,7 +9,7 @@
     <input type="text" placeholder="Enter Email" name="email" required>   
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <label for="psw-repeat"><b>Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="password" required>
+    <input type="password" placeholder="Password" name="password" required>
     <!--
     <label>
       <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me

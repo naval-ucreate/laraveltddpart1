@@ -32,7 +32,7 @@ class UserController extends Controller
             $users->email       = $input['email'];
             $users->password    = Hash::make($input['password']);
             $users->save();
-            return redirect('register')->with('success','User created successfully!');
+            return redirect()->route('display-login-page')->with('success','User created successfully!');
         }      
     }
     public function login()
