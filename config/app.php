@@ -175,8 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Sahil\First\FirstServiceProvider::class,
-        Rollbar\Laravel\RollbarServiceProvider::class,
-
+        Jenssegers\Rollbar\RollbarServiceProvider::class,
     ],
 
     /*

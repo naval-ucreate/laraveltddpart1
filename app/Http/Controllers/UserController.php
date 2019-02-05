@@ -67,7 +67,7 @@ class UserController extends Controller
     public  function checkRollbar()
     {
         $display = "naval";
-        $m
+        $m;
         return $display;
     }
 
