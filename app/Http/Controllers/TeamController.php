@@ -5,22 +5,11 @@ use App\Models\Team;
 use Illuminate\Support\Facades\Auth;
 class TeamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Team $team)
     {
-        $teamData  = $team->get();
+        $teamData  = $team->where('user_id',auth()->user()->id)->get();
         return view('dashboard/team',compact('teamData'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     protected function validateTeam($data)
     {
         $attributes  =  $data->validate([
@@ -33,13 +22,6 @@ class TeamController extends Controller
     {
         return view('dashboard/createTeam');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request['user_id']      =  auth()->user()->id;
@@ -47,49 +29,28 @@ class TeamController extends Controller
         Team::create($attributes);
         return redirect()->route('team.index')->with('success','Team has been created successfully'); 
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Team $team)
     {
         return view('dashboard/showTeam',compact('team'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $teamData  = Team::find($id);
+        return view('dashboard/updateTeam', compact('teamData'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
-    {
-        //
+    { 
+        $request['user_id']      =  auth()->user()->id;
+        $attributes              =  $this->validateTeam($request); 
+        $team                    =  Team::findOrFail($id);
+        $team->fill($attributes)->save();
+        return redirect()->route('team.index')->with('success','Team has been updated successfully');   
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $team = Team::findOrFail($id);
+        $team->delete();    
+        return redirect()->route('team.index')->with('success','Team has been deleted successfully');  
     }
 }

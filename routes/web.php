@@ -26,7 +26,6 @@ Route::get('/userdata','UserController@index')->name('display-userdata');
 
 //logout
 Route::get('/logout','DashboardController@logout')->name('logout');
-//logout
 Route::get('/rollbartest','UserController@checkRollbar')->name('rollbar');
 
 

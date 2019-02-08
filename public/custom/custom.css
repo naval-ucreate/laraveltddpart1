@@ -68,9 +68,23 @@ button:hover {
 {
   float:left;
 }
-.sign-up-form
+.sign-up-form h1
 {
   font-size:24px;
+}
+
+.sign-up-form span
+{
+  float:right;
+}
+.delete
+{
+  background-color: #fff !important;
+  color: #000 !important;
+  padding: 0px  !important;
+  margin: 0px  !important;
+  border: none;
+  text-align: left !important;
 }
 
 /* Change styles for cancel button and signup button on extra small screens */
