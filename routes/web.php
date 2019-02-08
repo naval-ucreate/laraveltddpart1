@@ -21,9 +21,19 @@ Route::get('/login','UserController@login')->name('display-login-page');
 Route::post('/check-login','UserController@doLogin')->name('check-login');
 //test
 Route::get('/emp','UserController@empdData')->name('display-empdata-page');
-//dashboard
-Route::get('/dashboard','DashboardController@dashboard')->name('display-dashboard');
+//userdata
+Route::get('/userdata','UserController@index')->name('display-userdata');
+
 //logout
 Route::get('/logout','DashboardController@logout')->name('logout');
 //logout
 Route::get('/rollbartest','UserController@checkRollbar')->name('rollbar');
+
+
+Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function()
+{
+    Route::get('/dashboard','DashboardController@dashboard')->name('display-dashboard');
+
+    Route::resource('/team','TeamController');
+
+});

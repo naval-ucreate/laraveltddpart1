@@ -12,10 +12,6 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $userData       = Users::get();
-        $lgoinUserData  = Auth::user();
-        //print_R($lgoinUserData);
-
-       // dd();
         return view('dashboard/dashboard',compact('userData'));
     }
     public function logout()

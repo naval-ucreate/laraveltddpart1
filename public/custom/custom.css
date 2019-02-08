@@ -64,6 +64,14 @@ button:hover {
   clear: both;
   display: table;
 }
+.copyright
+{
+  float:left;
+}
+.sign-up-form
+{
+  font-size:24px;
+}
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {

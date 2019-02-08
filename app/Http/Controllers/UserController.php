@@ -7,6 +7,12 @@ use App\Models\Users;
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {    
+    public function index()
+    {
+
+        $userData = Users::select()->get();
+        return json_encode($userData);
+    }
     public function register()
     {
         return view('pages/register');
@@ -31,7 +37,7 @@ class UserController extends Controller
             $users->name        = $input['name'];
             $users->email       = $input['email'];
             $users->password    = Hash::make($input['password']);
-            $users->save();
+            $users->save();            
             return redirect()->route('display-login-page')->with('success','User created successfully!');
         }      
     }
@@ -41,6 +47,7 @@ class UserController extends Controller
     }
     public function doLogin(request $request)
     {
+     
         $this->validate($request,[
         'email' => 'required',
         'password' => 'required'
@@ -69,5 +76,5 @@ class UserController extends Controller
         $display = "naval";
         return $display;
     }
-
+  
 }
