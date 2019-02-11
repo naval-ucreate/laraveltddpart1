@@ -6,7 +6,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="<?php echo route('team.index'); ?>">Team</a></li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="<?php echo route('player.index'); ?>">Player</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       @if(!Auth::check())
