@@ -5,8 +5,8 @@ use App\Models\Team;
 use Illuminate\Support\Facades\Auth;
 class TeamController extends Controller
 {
-    public function index(Team $team)
-    {
+
+    public function index(Team $team){
         if(auth()->user()->id==1)
         {
             $teamData  = $team->get();
@@ -17,31 +17,26 @@ class TeamController extends Controller
         }
         return view('dashboard/team',compact('teamData'));
     }
-    protected function validateTeam($data)
-    {
-        $attributes  =  $data->validate([
-                            'name' =>'required'
-                         ]);
+
+    protected function validateTeam($data){
+        $attributes  =  $data->validate(['name' =>'required']);
         return  $attributes;   
     }
-    public function create()
-    {
+    public function create(){
         return view('dashboard/createTeam');
     }
-    public function store(Request $request)
-    {
-        
+    public function store(Request $request){        
         $attributes              =  $this->validateTeam($request); 
         $attributes['user_id']   =  auth()->user()->id;
         Team::create($attributes);
         return redirect()->route('team.index')->with('success','Team has been created successfully'); 
     }
-    public function show(Team $team)
-    {
+    public function show(Team $team){
         return view('dashboard/showTeam',compact('team'));
     }
-    public function edit(Team $team)
-    {    
+
+    public function edit(Team $team){    
+
         //abort_if
         //abort_unless
         //$his->authrize
@@ -58,15 +53,23 @@ class TeamController extends Controller
         // }   
         return view('dashboard/updateTeam', compact('team'));
     }
+<<<<<<< HEAD
     public function update(Request $request, Team $team)
     {           
+=======
+    public function update(Request $request, Team $team){           
+>>>>>>> e3a8c9564606e00118a399c2303a4249c5913012
         $attributes              =  $this->validateTeam($request); 
         $team->fill($attributes)->save();       
         return redirect()->route('team.index')->with('success','Team has been updated successfully');   
     }
 
+<<<<<<< HEAD
     public function destroy(Team $team)
     {
+=======
+    public function destroy(Team $team){
+>>>>>>> e3a8c9564606e00118a399c2303a4249c5913012
         $team->delete();
         return redirect()->route('team.index')->with('error','Team has been deleted successfully');   
         

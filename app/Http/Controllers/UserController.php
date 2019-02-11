@@ -58,7 +58,7 @@ class UserController extends Controller
         'password'  => $input['password']
         );
         if (Auth::attempt($userdata)) {
-            return redirect()->route('display-dashboard');    
+            return redirect()->route('team.index');    
         } 
         return redirect()->route('display-login-page')->with('error','There is some error! Please try again');
      }

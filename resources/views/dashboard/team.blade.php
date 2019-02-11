@@ -19,7 +19,7 @@
 <td><a href="{{ route('team.show',[$teamVal->id])}}">{{ $teamVal->name }}</a></td>
 <td><a href="{{ route('team.show',[$teamVal->id])}}">View</a> 
 / <a href="{{ route('team.edit',[$teamVal->id])}}">Edit</a> 
-<form action="{{ route('team.show',[$teamVal->id])}}"" method="POST">
+<form action="{{ route('team.show',[$teamVal->id])}}"" method="POST" onSubmit="return confirm('Are you sure you want delete')">
  @method('DELETE')
  @csrf
  <button type="submit" class="delete"> Delete</button>               
@@ -30,10 +30,5 @@
 </tr>
 </tbody>
 </table>
-
-
-
-
-
 @endif
 @stop
