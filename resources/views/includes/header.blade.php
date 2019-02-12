@@ -4,9 +4,8 @@
       <a class="navbar-brand" href="#">WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="<?php echo route('team.index'); ?>">Team</a></li>
-      <li><a href="<?php echo route('player.index'); ?>">Player</a></li>
+      <li class="@yield('home')"><a href="#">Home</a></li>
+      <li class="@yield('team')" ><a href="<?php echo route('team.index'); ?>" >Team</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       @if(!Auth::check())

@@ -23,7 +23,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(Gate $gate)
     {
-        $this->registerPolicies();
+      //  $this->registerPolicies();
         Gate::before(function ($user)
         {
             return $user->id = 1;//Admin

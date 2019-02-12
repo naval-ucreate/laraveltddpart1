@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Player;
 class PlayerController extends Controller
 {
     /**
@@ -13,28 +13,30 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        //
+        dd("test");
     }
-
+    protected function validateTeam($data){
+        $attributes  =  $data->validate([
+            'name' =>'required',
+            'email'=>'email'
+        ]);
+        return  $attributes;   
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create($teamId)
+    {      
+        return view('dashboard/createPlayer',compact('teamId'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request,$teamId){
+        $attributes              =  $this->validateTeam($request); 
+        $attributes['team_id']   =  $teamId;
+        Player::create($attributes);
+        flash("Player has been added successfully","success");
+        return redirect()->route('team.show',[$teamId]);
     }
 
     /**
@@ -77,8 +79,10 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id,Player $player)
+    {    
+        $player->delete();
+        flash("Player has been deleted successfully","success");       
+        return back();
     }
 }

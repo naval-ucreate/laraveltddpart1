@@ -2,10 +2,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Team;
+use App\Models\Player;
+use App\Mail\TeamCreated;
 use Illuminate\Support\Facades\Auth;
 class TeamController extends Controller
 {
-
     public function index(Team $team){
         if(auth()->user()->id==1)
         {
@@ -17,9 +18,8 @@ class TeamController extends Controller
         }
         return view('dashboard/team',compact('teamData'));
     }
-
     protected function validateTeam($data){
-        $attributes  =  $data->validate(['name' =>'required']);
+        $attributes  =  $data->validate(['name' =>'required|min:3|max:50|unique:teams']);
         return  $attributes;   
     }
     public function create(){
@@ -28,7 +28,10 @@ class TeamController extends Controller
     public function store(Request $request){        
         $attributes              =  $this->validateTeam($request); 
         $attributes['user_id']   =  auth()->user()->id;
-        Team::create($attributes);
+        $team                    =  Team::create($attributes);
+        \Mail::to('naval@ucreate.co.in')->send(
+                new TeamCreated($team)
+        );
         return redirect()->route('team.index')->with('success','Team has been created successfully'); 
     }
     public function show(Team $team){
@@ -53,23 +56,12 @@ class TeamController extends Controller
         // }   
         return view('dashboard/updateTeam', compact('team'));
     }
-<<<<<<< HEAD
-    public function update(Request $request, Team $team)
-    {           
-=======
     public function update(Request $request, Team $team){           
->>>>>>> e3a8c9564606e00118a399c2303a4249c5913012
         $attributes              =  $this->validateTeam($request); 
         $team->fill($attributes)->save();       
         return redirect()->route('team.index')->with('success','Team has been updated successfully');   
     }
-
-<<<<<<< HEAD
-    public function destroy(Team $team)
-    {
-=======
     public function destroy(Team $team){
->>>>>>> e3a8c9564606e00118a399c2303a4249c5913012
         $team->delete();
         return redirect()->route('team.index')->with('error','Team has been deleted successfully');   
         

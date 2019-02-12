@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function()
     Route::get('/dashboard','DashboardController@dashboard')->name('display-dashboard');
 
     Route::resource('/team','TeamController');
+    Route::resource('/{teamId}/player','PlayerController');
 
 });
 
