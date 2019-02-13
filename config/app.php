@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Sahil\First\FirstServiceProvider::class,
         Jenssegers\Rollbar\RollbarServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
 
        ],
 
