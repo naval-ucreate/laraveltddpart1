@@ -39,3 +39,6 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function()
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/trelloapi', 'TeamController@getTrelloApi')->name('trello_api');

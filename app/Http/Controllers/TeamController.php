@@ -5,6 +5,9 @@ use App\Models\Team;
 use App\Models\Player;
 use App\Mail\TeamCreated;
 use Illuminate\Support\Facades\Auth;
+use Trello\Client;
+
+
 class TeamController extends Controller
 {
     public function index(Team $team){
@@ -21,6 +24,15 @@ class TeamController extends Controller
     protected function validateTeam($data){
         $attributes  =  $data->validate(['name' =>'required|min:3|max:50|unique:teams']);
         return  $attributes;   
+    }
+    public function getTrelloApi(){
+        $client = new Client();
+        
+        $client->authenticate('5b60d3f32d9fadef119dfaf96af008ba','e0305599021a3042eccb45abbadd78440de3c459a72e7aba175275733b2fe578', Client::AUTH_URL_CLIENT_ID);        
+      
+        dd($client);
+        $boards = $client->api('member')->boards()->all("pankaj", array());
+        dd($boards);
     }
     public function create(){
         return view('dashboard/createTeam');
