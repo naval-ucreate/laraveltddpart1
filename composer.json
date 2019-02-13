@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "sahil/first": "^2.2"
+        "sahil/first": "^2.2",
+        "laravel/telescope":"v1.0.13"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
