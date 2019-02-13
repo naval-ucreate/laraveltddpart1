@@ -176,7 +176,7 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Sahil\First\FirstServiceProvider::class,
-    ],
+       ],
 
     /*
     |--------------------------------------------------------------------------
