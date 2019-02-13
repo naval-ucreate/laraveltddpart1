@@ -13,7 +13,8 @@
         "laravel/framework": "5.7.*",
         "laravel/telescope": "^1.0",
         "laravel/tinker": "^1.0",
-        "sahil/first": "^2.2"
+        "sahil/first": "^2.2",
+        "jenssegers/rollbar": "^1.5"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
