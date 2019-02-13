@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+
 use Laravel\Telescope\Telescope;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Telescope\IncomingEntry;
+
 use Laravel\Telescope\TelescopeApplicationServiceProvider;
 
 class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
@@ -51,6 +53,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         ]);
     }
 
+
     /**
      * Register the Telescope gate.
      *
@@ -60,10 +63,9 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      */
     protected function gate()
     {
-        Gate::define('viewTelescope', function ($user) {
-            echo "hi";
-            dd("test");
+          
+        Gate::define('viewTelescope', function ($user) {        
             return in_array($user->id, [1]);
-        });
+         }); 
     }
 }

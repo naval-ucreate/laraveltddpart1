@@ -50,6 +50,14 @@ class TeamController extends Controller
         return view('dashboard/showTeam',compact('team'));
     }
 
+
+    public function abc($a,$b){
+        if(is_callble($b)){
+            return call_user_func(array($a, $b));
+        }
+
+    }
+
     public function edit(Team $team){    
 
         //abort_if
